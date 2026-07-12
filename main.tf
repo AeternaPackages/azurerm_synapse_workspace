@@ -5,7 +5,7 @@ locals {
     for k1, v1 in var.synapse_workspaces : {
       for k2, v2 in coalesce(v1.synapse_firewall_rules, {}) :
       "${k1}/${k2}" => merge(v2, {
-        synapse_workspace_id = module.synapse_workspaces.synapse_workspaces["${k1}"].id
+        synapse_workspace_id = module.synapse_workspaces.synapse_workspaces_id["${k1}"]
       })
     }
   ]...)
@@ -14,7 +14,7 @@ locals {
     for k1, v1 in var.synapse_workspaces : {
       for k2, v2 in coalesce(v1.synapse_integration_runtime_azures, {}) :
       "${k1}/${k2}" => merge(v2, {
-        synapse_workspace_id = module.synapse_workspaces.synapse_workspaces["${k1}"].id
+        synapse_workspace_id = module.synapse_workspaces.synapse_workspaces_id["${k1}"]
       })
     }
   ]...)
@@ -23,7 +23,7 @@ locals {
     for k1, v1 in var.synapse_workspaces : {
       for k2, v2 in coalesce(v1.synapse_integration_runtime_self_hosteds, {}) :
       "${k1}/${k2}" => merge(v2, {
-        synapse_workspace_id = module.synapse_workspaces.synapse_workspaces["${k1}"].id
+        synapse_workspace_id = module.synapse_workspaces.synapse_workspaces_id["${k1}"]
       })
     }
   ]...)
@@ -32,7 +32,7 @@ locals {
     for k1, v1 in var.synapse_workspaces : {
       for k2, v2 in coalesce(v1.synapse_linked_services, {}) :
       "${k1}/${k2}" => merge(v2, {
-        synapse_workspace_id = module.synapse_workspaces.synapse_workspaces["${k1}"].id
+        synapse_workspace_id = module.synapse_workspaces.synapse_workspaces_id["${k1}"]
       })
     }
   ]...)
@@ -41,7 +41,7 @@ locals {
     for k1, v1 in var.synapse_workspaces : {
       for k2, v2 in coalesce(v1.synapse_managed_private_endpoints, {}) :
       "${k1}/${k2}" => merge(v2, {
-        synapse_workspace_id = module.synapse_workspaces.synapse_workspaces["${k1}"].id
+        synapse_workspace_id = module.synapse_workspaces.synapse_workspaces_id["${k1}"]
       })
     }
   ]...)
@@ -50,7 +50,7 @@ locals {
     for k1, v1 in var.synapse_workspaces : {
       for k2, v2 in coalesce(v1.synapse_spark_pools, {}) :
       "${k1}/${k2}" => merge(v2, {
-        synapse_workspace_id = module.synapse_workspaces.synapse_workspaces["${k1}"].id
+        synapse_workspace_id = module.synapse_workspaces.synapse_workspaces_id["${k1}"]
       })
     }
   ]...)
@@ -59,7 +59,7 @@ locals {
     for k1, v1 in var.synapse_workspaces : {
       for k2, v2 in coalesce(v1.synapse_sql_pools, {}) :
       "${k1}/${k2}" => merge(v2, {
-        synapse_workspace_id = module.synapse_workspaces.synapse_workspaces["${k1}"].id
+        synapse_workspace_id = module.synapse_workspaces.synapse_workspaces_id["${k1}"]
       })
     }
   ]...)
@@ -68,7 +68,7 @@ locals {
     for k1, v1 in var.synapse_workspaces : {
       for k2, v2 in coalesce(v1.synapse_workspace_aad_admins, {}) :
       "${k1}/${k2}" => merge(v2, {
-        synapse_workspace_id = module.synapse_workspaces.synapse_workspaces["${k1}"].id
+        synapse_workspace_id = module.synapse_workspaces.synapse_workspaces_id["${k1}"]
       })
     }
   ]...)
@@ -77,7 +77,7 @@ locals {
     for k1, v1 in var.synapse_workspaces : {
       for k2, v2 in coalesce(v1.synapse_workspace_extended_auditing_policies, {}) :
       "${k1}/${k2}" => merge(v2, {
-        synapse_workspace_id = module.synapse_workspaces.synapse_workspaces["${k1}"].id
+        synapse_workspace_id = module.synapse_workspaces.synapse_workspaces_id["${k1}"]
       })
     }
   ]...)
@@ -86,7 +86,7 @@ locals {
     for k1, v1 in var.synapse_workspaces : {
       for k2, v2 in coalesce(v1.synapse_workspace_keys, {}) :
       "${k1}/${k2}" => merge(v2, {
-        synapse_workspace_id = module.synapse_workspaces.synapse_workspaces["${k1}"].id
+        synapse_workspace_id = module.synapse_workspaces.synapse_workspaces_id["${k1}"]
       })
     }
   ]...)
@@ -95,7 +95,7 @@ locals {
     for k1, v1 in var.synapse_workspaces : {
       for k2, v2 in coalesce(v1.synapse_workspace_security_alert_policies, {}) :
       "${k1}/${k2}" => merge(v2, {
-        synapse_workspace_id = module.synapse_workspaces.synapse_workspaces["${k1}"].id
+        synapse_workspace_id = module.synapse_workspaces.synapse_workspaces_id["${k1}"]
       })
     }
   ]...)
@@ -104,7 +104,7 @@ locals {
     for k1, v1 in var.synapse_workspaces : {
       for k2, v2 in coalesce(v1.synapse_workspace_sql_aad_admins, {}) :
       "${k1}/${k2}" => merge(v2, {
-        synapse_workspace_id = module.synapse_workspaces.synapse_workspaces["${k1}"].id
+        synapse_workspace_id = module.synapse_workspaces.synapse_workspaces_id["${k1}"]
       })
     }
   ]...)
