@@ -1,4 +1,9 @@
 # --- azurerm_synapse_workspace ---
+output "synapse_workspaces_id" {
+  description = "Map of id values across all synapse_workspaces, keyed the same as var.synapse_workspaces"
+  value       = module.synapse_workspaces.synapse_workspaces_id
+}
+
 output "synapse_workspaces_azure_devops_repo" {
   description = "Map of azure_devops_repo values across all synapse_workspaces, keyed the same as var.synapse_workspaces"
   value       = module.synapse_workspaces.synapse_workspaces_azure_devops_repo
@@ -106,6 +111,11 @@ output "synapse_workspaces_tags" {
 }
 
 # --- azurerm_synapse_firewall_rule ---
+output "synapse_firewall_rules_id" {
+  description = "Map of id values across all synapse_firewall_rules, keyed the same as var.synapse_firewall_rules"
+  value       = module.synapse_firewall_rules.synapse_firewall_rules_id
+}
+
 output "synapse_firewall_rules_end_ip_address" {
   description = "Map of end_ip_address values across all synapse_firewall_rules, keyed the same as var.synapse_firewall_rules"
   value       = module.synapse_firewall_rules.synapse_firewall_rules_end_ip_address
@@ -127,6 +137,11 @@ output "synapse_firewall_rules_synapse_workspace_id" {
 }
 
 # --- azurerm_synapse_integration_runtime_azure ---
+output "synapse_integration_runtime_azures_id" {
+  description = "Map of id values across all synapse_integration_runtime_azures, keyed the same as var.synapse_integration_runtime_azures"
+  value       = module.synapse_integration_runtime_azures.synapse_integration_runtime_azures_id
+}
+
 output "synapse_integration_runtime_azures_compute_type" {
   description = "Map of compute_type values across all synapse_integration_runtime_azures, keyed the same as var.synapse_integration_runtime_azures"
   value       = module.synapse_integration_runtime_azures.synapse_integration_runtime_azures_compute_type
@@ -163,6 +178,11 @@ output "synapse_integration_runtime_azures_time_to_live_min" {
 }
 
 # --- azurerm_synapse_integration_runtime_self_hosted ---
+output "synapse_integration_runtime_self_hosteds_id" {
+  description = "Map of id values across all synapse_integration_runtime_self_hosteds, keyed the same as var.synapse_integration_runtime_self_hosteds"
+  value       = module.synapse_integration_runtime_self_hosteds.synapse_integration_runtime_self_hosteds_id
+}
+
 output "synapse_integration_runtime_self_hosteds_authorization_key_primary" {
   description = "Map of authorization_key_primary values across all synapse_integration_runtime_self_hosteds, keyed the same as var.synapse_integration_runtime_self_hosteds"
   value       = module.synapse_integration_runtime_self_hosteds.synapse_integration_runtime_self_hosteds_authorization_key_primary
@@ -189,6 +209,11 @@ output "synapse_integration_runtime_self_hosteds_synapse_workspace_id" {
 }
 
 # --- azurerm_synapse_linked_service ---
+output "synapse_linked_services_id" {
+  description = "Map of id values across all synapse_linked_services, keyed the same as var.synapse_linked_services"
+  value       = module.synapse_linked_services.synapse_linked_services_id
+}
+
 output "synapse_linked_services_additional_properties" {
   description = "Map of additional_properties values across all synapse_linked_services, keyed the same as var.synapse_linked_services"
   value       = module.synapse_linked_services.synapse_linked_services_additional_properties
@@ -235,6 +260,11 @@ output "synapse_linked_services_type_properties_json" {
 }
 
 # --- azurerm_synapse_managed_private_endpoint ---
+output "synapse_managed_private_endpoints_id" {
+  description = "Map of id values across all synapse_managed_private_endpoints, keyed the same as var.synapse_managed_private_endpoints"
+  value       = module.synapse_managed_private_endpoints.synapse_managed_private_endpoints_id
+}
+
 output "synapse_managed_private_endpoints_fully_qualified_domain_names" {
   description = "Map of fully_qualified_domain_names values across all synapse_managed_private_endpoints, keyed the same as var.synapse_managed_private_endpoints"
   value       = module.synapse_managed_private_endpoints.synapse_managed_private_endpoints_fully_qualified_domain_names
@@ -261,6 +291,11 @@ output "synapse_managed_private_endpoints_target_resource_id" {
 }
 
 # --- azurerm_synapse_spark_pool ---
+output "synapse_spark_pools_id" {
+  description = "Map of id values across all synapse_spark_pools, keyed the same as var.synapse_spark_pools"
+  value       = module.synapse_spark_pools.synapse_spark_pools_id
+}
+
 output "synapse_spark_pools_auto_pause" {
   description = "Map of auto_pause values across all synapse_spark_pools, keyed the same as var.synapse_spark_pools"
   value       = module.synapse_spark_pools.synapse_spark_pools_auto_pause
@@ -357,6 +392,11 @@ output "synapse_spark_pools_tags" {
 }
 
 # --- azurerm_synapse_sql_pool ---
+output "synapse_sql_pools_id" {
+  description = "Map of id values across all synapse_sql_pools, keyed the same as var.synapse_sql_pools"
+  value       = module.synapse_sql_pools.synapse_sql_pools_id
+}
+
 output "synapse_sql_pools_collation" {
   description = "Map of collation values across all synapse_sql_pools, keyed the same as var.synapse_sql_pools"
   value       = module.synapse_sql_pools.synapse_sql_pools_collation
@@ -413,6 +453,11 @@ output "synapse_sql_pools_tags" {
 }
 
 # --- azurerm_synapse_workspace_aad_admin ---
+output "synapse_workspace_aad_admins_id" {
+  description = "Map of id values across all synapse_workspace_aad_admins, keyed the same as var.synapse_workspace_aad_admins"
+  value       = module.synapse_workspace_aad_admins.synapse_workspace_aad_admins_id
+}
+
 output "synapse_workspace_aad_admins_login" {
   description = "Map of login values across all synapse_workspace_aad_admins, keyed the same as var.synapse_workspace_aad_admins"
   value       = module.synapse_workspace_aad_admins.synapse_workspace_aad_admins_login
@@ -434,6 +479,11 @@ output "synapse_workspace_aad_admins_tenant_id" {
 }
 
 # --- azurerm_synapse_workspace_extended_auditing_policy ---
+output "synapse_workspace_extended_auditing_policies_id" {
+  description = "Map of id values across all synapse_workspace_extended_auditing_policies, keyed the same as var.synapse_workspace_extended_auditing_policies"
+  value       = module.synapse_workspace_extended_auditing_policies.synapse_workspace_extended_auditing_policies_id
+}
+
 output "synapse_workspace_extended_auditing_policies_log_monitoring_enabled" {
   description = "Map of log_monitoring_enabled values across all synapse_workspace_extended_auditing_policies, keyed the same as var.synapse_workspace_extended_auditing_policies"
   value       = module.synapse_workspace_extended_auditing_policies.synapse_workspace_extended_auditing_policies_log_monitoring_enabled
@@ -466,6 +516,11 @@ output "synapse_workspace_extended_auditing_policies_synapse_workspace_id" {
 }
 
 # --- azurerm_synapse_workspace_key ---
+output "synapse_workspace_keys_id" {
+  description = "Map of id values across all synapse_workspace_keys, keyed the same as var.synapse_workspace_keys"
+  value       = module.synapse_workspace_keys.synapse_workspace_keys_id
+}
+
 output "synapse_workspace_keys_active" {
   description = "Map of active values across all synapse_workspace_keys, keyed the same as var.synapse_workspace_keys"
   value       = module.synapse_workspace_keys.synapse_workspace_keys_active
@@ -487,6 +542,11 @@ output "synapse_workspace_keys_synapse_workspace_id" {
 }
 
 # --- azurerm_synapse_workspace_security_alert_policy ---
+output "synapse_workspace_security_alert_policies_id" {
+  description = "Map of id values across all synapse_workspace_security_alert_policies, keyed the same as var.synapse_workspace_security_alert_policies"
+  value       = module.synapse_workspace_security_alert_policies.synapse_workspace_security_alert_policies_id
+}
+
 output "synapse_workspace_security_alert_policies_disabled_alerts" {
   description = "Map of disabled_alerts values across all synapse_workspace_security_alert_policies, keyed the same as var.synapse_workspace_security_alert_policies"
   value       = module.synapse_workspace_security_alert_policies.synapse_workspace_security_alert_policies_disabled_alerts
@@ -529,6 +589,11 @@ output "synapse_workspace_security_alert_policies_synapse_workspace_id" {
 }
 
 # --- azurerm_synapse_workspace_sql_aad_admin ---
+output "synapse_workspace_sql_aad_admins_id" {
+  description = "Map of id values across all synapse_workspace_sql_aad_admins, keyed the same as var.synapse_workspace_sql_aad_admins"
+  value       = module.synapse_workspace_sql_aad_admins.synapse_workspace_sql_aad_admins_id
+}
+
 output "synapse_workspace_sql_aad_admins_login" {
   description = "Map of login values across all synapse_workspace_sql_aad_admins, keyed the same as var.synapse_workspace_sql_aad_admins"
   value       = module.synapse_workspace_sql_aad_admins.synapse_workspace_sql_aad_admins_login
