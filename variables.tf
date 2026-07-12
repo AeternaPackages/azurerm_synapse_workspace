@@ -17,6 +17,8 @@ Optional:
     - purview_id
     - sql_administrator_login
     - sql_administrator_login_password
+    - sql_administrator_login_password_key_vault_id (alternative to sql_administrator_login_password - read from Key Vault instead)
+    - sql_administrator_login_password_key_vault_secret_name (alternative to sql_administrator_login_password - read from Key Vault instead)
     - sql_identity_control_enabled
     - tags
     - azure_devops_repo (block)
@@ -104,6 +106,8 @@ Nested synapse_workspace_extended_auditing_policies (azurerm_synapse_workspace_e
         - log_monitoring_enabled
         - retention_in_days
         - storage_account_access_key
+        - storage_account_access_key_key_vault_id (alternative to storage_account_access_key - read from Key Vault instead)
+        - storage_account_access_key_key_vault_secret_name (alternative to storage_account_access_key - read from Key Vault instead)
         - storage_account_access_key_is_secondary
         - storage_endpoint
 Nested synapse_workspace_keys (azurerm_synapse_workspace_key):
@@ -121,6 +125,8 @@ Nested synapse_workspace_security_alert_policies (azurerm_synapse_workspace_secu
         - email_addresses
         - retention_days
         - storage_account_access_key
+        - storage_account_access_key_key_vault_id (alternative to storage_account_access_key - read from Key Vault instead)
+        - storage_account_access_key_key_vault_secret_name (alternative to storage_account_access_key - read from Key Vault instead)
         - storage_endpoint
 Nested synapse_workspace_sql_aad_admins (azurerm_synapse_workspace_sql_aad_admin):
     Required:
@@ -130,22 +136,24 @@ Nested synapse_workspace_sql_aad_admins (azurerm_synapse_workspace_sql_aad_admin
 EOT
 
   type = map(object({
-    location                             = string
-    name                                 = string
-    resource_group_name                  = string
-    storage_data_lake_gen2_filesystem_id = string
-    azuread_authentication_only          = optional(bool) # Default: false
-    compute_subnet_id                    = optional(string)
-    data_exfiltration_protection_enabled = optional(bool)
-    linking_allowed_for_aad_tenant_ids   = optional(list(string))
-    managed_resource_group_name          = optional(string)
-    managed_virtual_network_enabled      = optional(bool)
-    public_network_access_enabled        = optional(bool) # Default: true
-    purview_id                           = optional(string)
-    sql_administrator_login              = optional(string)
-    sql_administrator_login_password     = optional(string)
-    sql_identity_control_enabled         = optional(bool)
-    tags                                 = optional(map(string))
+    location                                               = string
+    name                                                   = string
+    resource_group_name                                    = string
+    storage_data_lake_gen2_filesystem_id                   = string
+    azuread_authentication_only                            = optional(bool) # Default: false
+    compute_subnet_id                                      = optional(string)
+    data_exfiltration_protection_enabled                   = optional(bool)
+    linking_allowed_for_aad_tenant_ids                     = optional(list(string))
+    managed_resource_group_name                            = optional(string)
+    managed_virtual_network_enabled                        = optional(bool)
+    public_network_access_enabled                          = optional(bool) # Default: true
+    purview_id                                             = optional(string)
+    sql_administrator_login                                = optional(string)
+    sql_administrator_login_password                       = optional(string)
+    sql_administrator_login_password_key_vault_id          = optional(string)
+    sql_administrator_login_password_key_vault_secret_name = optional(string)
+    sql_identity_control_enabled                           = optional(bool)
+    tags                                                   = optional(map(string))
     azure_devops_repo = optional(object({
       account_name    = string
       branch_name     = string
@@ -260,11 +268,13 @@ EOT
       tenant_id = string
     })))
     synapse_workspace_extended_auditing_policies = optional(map(object({
-      log_monitoring_enabled                  = optional(bool)   # Default: true
-      retention_in_days                       = optional(number) # Default: 0
-      storage_account_access_key              = optional(string)
-      storage_account_access_key_is_secondary = optional(bool) # Default: false
-      storage_endpoint                        = optional(string)
+      log_monitoring_enabled                           = optional(bool)   # Default: true
+      retention_in_days                                = optional(number) # Default: 0
+      storage_account_access_key                       = optional(string)
+      storage_account_access_key_key_vault_id          = optional(string)
+      storage_account_access_key_key_vault_secret_name = optional(string)
+      storage_account_access_key_is_secondary          = optional(bool) # Default: false
+      storage_endpoint                                 = optional(string)
     })))
     synapse_workspace_keys = optional(map(object({
       active                              = bool
@@ -272,13 +282,15 @@ EOT
       customer_managed_key_versionless_id = optional(string)
     })))
     synapse_workspace_security_alert_policies = optional(map(object({
-      policy_state                 = string
-      disabled_alerts              = optional(set(string))
-      email_account_admins_enabled = optional(bool) # Default: false
-      email_addresses              = optional(set(string))
-      retention_days               = optional(number) # Default: 0
-      storage_account_access_key   = optional(string)
-      storage_endpoint             = optional(string)
+      policy_state                                     = string
+      disabled_alerts                                  = optional(set(string))
+      email_account_admins_enabled                     = optional(bool) # Default: false
+      email_addresses                                  = optional(set(string))
+      retention_days                                   = optional(number) # Default: 0
+      storage_account_access_key                       = optional(string)
+      storage_account_access_key_key_vault_id          = optional(string)
+      storage_account_access_key_key_vault_secret_name = optional(string)
+      storage_endpoint                                 = optional(string)
     })))
     synapse_workspace_sql_aad_admins = optional(map(object({
       login     = string
