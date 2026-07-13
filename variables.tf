@@ -140,13 +140,13 @@ EOT
     name                                                   = string
     resource_group_name                                    = string
     storage_data_lake_gen2_filesystem_id                   = string
-    azuread_authentication_only                            = optional(bool) # Default: false
+    azuread_authentication_only                            = optional(bool)
     compute_subnet_id                                      = optional(string)
     data_exfiltration_protection_enabled                   = optional(bool)
     linking_allowed_for_aad_tenant_ids                     = optional(list(string))
     managed_resource_group_name                            = optional(string)
     managed_virtual_network_enabled                        = optional(bool)
-    public_network_access_enabled                          = optional(bool) # Default: true
+    public_network_access_enabled                          = optional(bool)
     purview_id                                             = optional(string)
     sql_administrator_login                                = optional(string)
     sql_administrator_login_password                       = optional(string)
@@ -164,7 +164,7 @@ EOT
       tenant_id       = optional(string)
     }))
     customer_managed_key = optional(object({
-      key_name                  = optional(string) # Default: "cmk"
+      key_name                  = optional(string)
       key_versionless_id        = string
       user_assigned_identity_id = optional(string)
     }))
@@ -188,10 +188,10 @@ EOT
     synapse_integration_runtime_azures = optional(map(object({
       location         = string
       name             = string
-      compute_type     = optional(string) # Default: "General"
-      core_count       = optional(number) # Default: 8
+      compute_type     = optional(string)
+      core_count       = optional(number)
       description      = optional(string)
-      time_to_live_min = optional(number) # Default: 0
+      time_to_live_min = optional(number)
     })))
     synapse_integration_runtime_self_hosteds = optional(map(object({
       name        = string
@@ -222,14 +222,14 @@ EOT
       node_size_family                    = string
       spark_version                       = string
       cache_size                          = optional(number)
-      compute_isolation_enabled           = optional(bool) # Default: false
-      dynamic_executor_allocation_enabled = optional(bool) # Default: false
+      compute_isolation_enabled           = optional(bool)
+      dynamic_executor_allocation_enabled = optional(bool)
       max_executors                       = optional(number)
       min_executors                       = optional(number)
       node_count                          = optional(number)
-      session_level_packages_enabled      = optional(bool)   # Default: false
-      spark_events_folder                 = optional(string) # Default: "/events"
-      spark_log_folder                    = optional(string) # Default: "/logs"
+      session_level_packages_enabled      = optional(bool)
+      spark_events_folder                 = optional(string)
+      spark_log_folder                    = optional(string)
       tags                                = optional(map(string))
       auto_pause = optional(object({
         delay_in_minutes = number
@@ -252,9 +252,9 @@ EOT
       sku_name                  = string
       storage_account_type      = string
       collation                 = optional(string)
-      create_mode               = optional(string) # Default: "Default"
+      create_mode               = optional(string)
       data_encrypted            = optional(bool)
-      geo_backup_policy_enabled = optional(bool) # Default: true
+      geo_backup_policy_enabled = optional(bool)
       recovery_database_id      = optional(string)
       tags                      = optional(map(string))
       restore = optional(object({
@@ -268,12 +268,12 @@ EOT
       tenant_id = string
     })))
     synapse_workspace_extended_auditing_policies = optional(map(object({
-      log_monitoring_enabled                           = optional(bool)   # Default: true
-      retention_in_days                                = optional(number) # Default: 0
+      log_monitoring_enabled                           = optional(bool)
+      retention_in_days                                = optional(number)
       storage_account_access_key                       = optional(string)
       storage_account_access_key_key_vault_id          = optional(string)
       storage_account_access_key_key_vault_secret_name = optional(string)
-      storage_account_access_key_is_secondary          = optional(bool) # Default: false
+      storage_account_access_key_is_secondary          = optional(bool)
       storage_endpoint                                 = optional(string)
     })))
     synapse_workspace_keys = optional(map(object({
@@ -284,9 +284,9 @@ EOT
     synapse_workspace_security_alert_policies = optional(map(object({
       policy_state                                     = string
       disabled_alerts                                  = optional(set(string))
-      email_account_admins_enabled                     = optional(bool) # Default: false
+      email_account_admins_enabled                     = optional(bool)
       email_addresses                                  = optional(set(string))
-      retention_days                                   = optional(number) # Default: 0
+      retention_days                                   = optional(number)
       storage_account_access_key                       = optional(string)
       storage_account_access_key_key_vault_id          = optional(string)
       storage_account_access_key_key_vault_secret_name = optional(string)
