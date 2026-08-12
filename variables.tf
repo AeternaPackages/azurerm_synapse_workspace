@@ -96,6 +96,54 @@ Nested synapse_sql_pools (azurerm_synapse_sql_pool):
         - recovery_database_id
         - tags
         - restore (block)
+    Nested synapse_sql_pool_extended_auditing_policies (azurerm_synapse_sql_pool_extended_auditing_policy):
+        Optional:
+            - log_monitoring_enabled
+            - retention_in_days
+            - storage_account_access_key
+            - storage_account_access_key_key_vault_id (alternative to storage_account_access_key - read from Key Vault instead)
+            - storage_account_access_key_key_vault_secret_name (alternative to storage_account_access_key - read from Key Vault instead)
+            - storage_account_access_key_is_secondary
+            - storage_endpoint
+    Nested synapse_sql_pool_security_alert_policies (azurerm_synapse_sql_pool_security_alert_policy):
+        Required:
+            - policy_state
+        Optional:
+            - disabled_alerts
+            - email_account_admins_enabled
+            - email_addresses
+            - retention_days
+            - storage_account_access_key
+            - storage_account_access_key_key_vault_id (alternative to storage_account_access_key - read from Key Vault instead)
+            - storage_account_access_key_key_vault_secret_name (alternative to storage_account_access_key - read from Key Vault instead)
+            - storage_endpoint
+        Nested synapse_sql_pool_vulnerability_assessments (azurerm_synapse_sql_pool_vulnerability_assessment):
+            Required:
+                - storage_container_path
+            Optional:
+                - storage_account_access_key
+                - storage_account_access_key_key_vault_id (alternative to storage_account_access_key - read from Key Vault instead)
+                - storage_account_access_key_key_vault_secret_name (alternative to storage_account_access_key - read from Key Vault instead)
+                - storage_container_sas_key
+                - storage_container_sas_key_key_vault_id (alternative to storage_container_sas_key - read from Key Vault instead)
+                - storage_container_sas_key_key_vault_secret_name (alternative to storage_container_sas_key - read from Key Vault instead)
+                - recurring_scans (block)
+            Nested synapse_sql_pool_vulnerability_assessment_baselines (azurerm_synapse_sql_pool_vulnerability_assessment_baseline):
+                Required:
+                    - name
+                    - rule_name
+                Optional:
+                    - baseline (block)
+    Nested synapse_sql_pool_workload_groups (azurerm_synapse_sql_pool_workload_group):
+        Required:
+            - max_resource_percent
+            - min_resource_percent
+            - name
+        Optional:
+            - importance
+            - max_resource_percent_per_request
+            - min_resource_percent_per_request
+            - query_execution_timeout_in_seconds
 Nested synapse_workspace_aad_admins (azurerm_synapse_workspace_aad_admin):
     Required:
         - login
@@ -128,6 +176,17 @@ Nested synapse_workspace_security_alert_policies (azurerm_synapse_workspace_secu
         - storage_account_access_key_key_vault_id (alternative to storage_account_access_key - read from Key Vault instead)
         - storage_account_access_key_key_vault_secret_name (alternative to storage_account_access_key - read from Key Vault instead)
         - storage_endpoint
+    Nested synapse_workspace_vulnerability_assessments (azurerm_synapse_workspace_vulnerability_assessment):
+        Required:
+            - storage_container_path
+        Optional:
+            - storage_account_access_key
+            - storage_account_access_key_key_vault_id (alternative to storage_account_access_key - read from Key Vault instead)
+            - storage_account_access_key_key_vault_secret_name (alternative to storage_account_access_key - read from Key Vault instead)
+            - storage_container_sas_key
+            - storage_container_sas_key_key_vault_id (alternative to storage_container_sas_key - read from Key Vault instead)
+            - storage_container_sas_key_key_vault_secret_name (alternative to storage_container_sas_key - read from Key Vault instead)
+            - recurring_scans (block)
 Nested synapse_workspace_sql_aad_admins (azurerm_synapse_workspace_sql_aad_admin):
     Required:
         - login
@@ -261,6 +320,56 @@ EOT
         point_in_time      = string
         source_database_id = string
       }))
+      synapse_sql_pool_extended_auditing_policies = optional(map(object({
+        log_monitoring_enabled                           = optional(bool)
+        retention_in_days                                = optional(number)
+        storage_account_access_key                       = optional(string)
+        storage_account_access_key_key_vault_id          = optional(string)
+        storage_account_access_key_key_vault_secret_name = optional(string)
+        storage_account_access_key_is_secondary          = optional(bool)
+        storage_endpoint                                 = optional(string)
+      })))
+      synapse_sql_pool_security_alert_policies = optional(map(object({
+        policy_state                                     = string
+        disabled_alerts                                  = optional(set(string))
+        email_account_admins_enabled                     = optional(bool)
+        email_addresses                                  = optional(set(string))
+        retention_days                                   = optional(number)
+        storage_account_access_key                       = optional(string)
+        storage_account_access_key_key_vault_id          = optional(string)
+        storage_account_access_key_key_vault_secret_name = optional(string)
+        storage_endpoint                                 = optional(string)
+        synapse_sql_pool_vulnerability_assessments = optional(map(object({
+          storage_container_path                           = string
+          storage_account_access_key                       = optional(string)
+          storage_account_access_key_key_vault_id          = optional(string)
+          storage_account_access_key_key_vault_secret_name = optional(string)
+          storage_container_sas_key                        = optional(string)
+          storage_container_sas_key_key_vault_id           = optional(string)
+          storage_container_sas_key_key_vault_secret_name  = optional(string)
+          recurring_scans = optional(object({
+            email_subscription_admins_enabled = optional(bool)
+            emails                            = optional(list(string))
+            enabled                           = optional(bool)
+          }))
+          synapse_sql_pool_vulnerability_assessment_baselines = optional(map(object({
+            name      = string
+            rule_name = string
+            baseline = optional(list(object({
+              result = list(string)
+            })))
+          })))
+        })))
+      })))
+      synapse_sql_pool_workload_groups = optional(map(object({
+        max_resource_percent               = number
+        min_resource_percent               = number
+        name                               = string
+        importance                         = optional(string)
+        max_resource_percent_per_request   = optional(number)
+        min_resource_percent_per_request   = optional(number)
+        query_execution_timeout_in_seconds = optional(number)
+      })))
     })))
     synapse_workspace_aad_admins = optional(map(object({
       login     = string
@@ -291,6 +400,20 @@ EOT
       storage_account_access_key_key_vault_id          = optional(string)
       storage_account_access_key_key_vault_secret_name = optional(string)
       storage_endpoint                                 = optional(string)
+      synapse_workspace_vulnerability_assessments = optional(map(object({
+        storage_container_path                           = string
+        storage_account_access_key                       = optional(string)
+        storage_account_access_key_key_vault_id          = optional(string)
+        storage_account_access_key_key_vault_secret_name = optional(string)
+        storage_container_sas_key                        = optional(string)
+        storage_container_sas_key_key_vault_id           = optional(string)
+        storage_container_sas_key_key_vault_secret_name  = optional(string)
+        recurring_scans = optional(object({
+          email_subscription_admins_enabled = optional(bool)
+          emails                            = optional(list(string))
+          enabled                           = optional(bool)
+        }))
+      })))
     })))
     synapse_workspace_sql_aad_admins = optional(map(object({
       login     = string
@@ -309,10 +432,16 @@ EOT
       flatten([for k0, v0 in var.synapse_workspaces : [for kk in keys(coalesce(v0.synapse_managed_private_endpoints, {})) : !strcontains(kk, "/")]]),
       flatten([for k0, v0 in var.synapse_workspaces : [for kk in keys(coalesce(v0.synapse_spark_pools, {})) : !strcontains(kk, "/")]]),
       flatten([for k0, v0 in var.synapse_workspaces : [for kk in keys(coalesce(v0.synapse_sql_pools, {})) : !strcontains(kk, "/")]]),
+      flatten([for k0, v0 in var.synapse_workspaces : [for k1, v1 in coalesce(v0.synapse_sql_pools, {}) : [for kk in keys(coalesce(v1.synapse_sql_pool_extended_auditing_policies, {})) : !strcontains(kk, "/")]]]),
+      flatten([for k0, v0 in var.synapse_workspaces : [for k1, v1 in coalesce(v0.synapse_sql_pools, {}) : [for kk in keys(coalesce(v1.synapse_sql_pool_security_alert_policies, {})) : !strcontains(kk, "/")]]]),
+      flatten([for k0, v0 in var.synapse_workspaces : [for k1, v1 in coalesce(v0.synapse_sql_pools, {}) : [for k2, v2 in coalesce(v1.synapse_sql_pool_security_alert_policies, {}) : [for kk in keys(coalesce(v2.synapse_sql_pool_vulnerability_assessments, {})) : !strcontains(kk, "/")]]]]),
+      flatten([for k0, v0 in var.synapse_workspaces : [for k1, v1 in coalesce(v0.synapse_sql_pools, {}) : [for k2, v2 in coalesce(v1.synapse_sql_pool_security_alert_policies, {}) : [for k3, v3 in coalesce(v2.synapse_sql_pool_vulnerability_assessments, {}) : [for kk in keys(coalesce(v3.synapse_sql_pool_vulnerability_assessment_baselines, {})) : !strcontains(kk, "/")]]]]]),
+      flatten([for k0, v0 in var.synapse_workspaces : [for k1, v1 in coalesce(v0.synapse_sql_pools, {}) : [for kk in keys(coalesce(v1.synapse_sql_pool_workload_groups, {})) : !strcontains(kk, "/")]]]),
       flatten([for k0, v0 in var.synapse_workspaces : [for kk in keys(coalesce(v0.synapse_workspace_aad_admins, {})) : !strcontains(kk, "/")]]),
       flatten([for k0, v0 in var.synapse_workspaces : [for kk in keys(coalesce(v0.synapse_workspace_extended_auditing_policies, {})) : !strcontains(kk, "/")]]),
       flatten([for k0, v0 in var.synapse_workspaces : [for kk in keys(coalesce(v0.synapse_workspace_keys, {})) : !strcontains(kk, "/")]]),
       flatten([for k0, v0 in var.synapse_workspaces : [for kk in keys(coalesce(v0.synapse_workspace_security_alert_policies, {})) : !strcontains(kk, "/")]]),
+      flatten([for k0, v0 in var.synapse_workspaces : [for k1, v1 in coalesce(v0.synapse_workspace_security_alert_policies, {}) : [for kk in keys(coalesce(v1.synapse_workspace_vulnerability_assessments, {})) : !strcontains(kk, "/")]]]),
       flatten([for k0, v0 in var.synapse_workspaces : [for kk in keys(coalesce(v0.synapse_workspace_sql_aad_admins, {})) : !strcontains(kk, "/")]])
     ))
     error_message = "Map keys in this package must not contain '/': it is used internally as a nesting-key separator, so a key containing it can silently collide two different nested entries into one. Rename the offending key(s)."

@@ -614,4 +614,226 @@ output "synapse_workspace_sql_aad_admins_tenant_id" {
   value       = module.synapse_workspace_sql_aad_admins.synapse_workspace_sql_aad_admins_tenant_id
 }
 
+# --- azurerm_synapse_sql_pool_extended_auditing_policy ---
+output "synapse_sql_pool_extended_auditing_policies_id" {
+  description = "Map of id values across all synapse_sql_pool_extended_auditing_policies, keyed the same as var.synapse_sql_pool_extended_auditing_policies"
+  value       = module.synapse_sql_pool_extended_auditing_policies.synapse_sql_pool_extended_auditing_policies_id
+}
+
+output "synapse_sql_pool_extended_auditing_policies_log_monitoring_enabled" {
+  description = "Map of log_monitoring_enabled values across all synapse_sql_pool_extended_auditing_policies, keyed the same as var.synapse_sql_pool_extended_auditing_policies"
+  value       = module.synapse_sql_pool_extended_auditing_policies.synapse_sql_pool_extended_auditing_policies_log_monitoring_enabled
+}
+
+output "synapse_sql_pool_extended_auditing_policies_retention_in_days" {
+  description = "Map of retention_in_days values across all synapse_sql_pool_extended_auditing_policies, keyed the same as var.synapse_sql_pool_extended_auditing_policies"
+  value       = module.synapse_sql_pool_extended_auditing_policies.synapse_sql_pool_extended_auditing_policies_retention_in_days
+}
+
+output "synapse_sql_pool_extended_auditing_policies_sql_pool_id" {
+  description = "Map of sql_pool_id values across all synapse_sql_pool_extended_auditing_policies, keyed the same as var.synapse_sql_pool_extended_auditing_policies"
+  value       = module.synapse_sql_pool_extended_auditing_policies.synapse_sql_pool_extended_auditing_policies_sql_pool_id
+}
+
+output "synapse_sql_pool_extended_auditing_policies_storage_account_access_key" {
+  description = "Map of storage_account_access_key values across all synapse_sql_pool_extended_auditing_policies, keyed the same as var.synapse_sql_pool_extended_auditing_policies"
+  value       = module.synapse_sql_pool_extended_auditing_policies.synapse_sql_pool_extended_auditing_policies_storage_account_access_key
+  sensitive   = true
+}
+
+output "synapse_sql_pool_extended_auditing_policies_storage_account_access_key_is_secondary" {
+  description = "Map of storage_account_access_key_is_secondary values across all synapse_sql_pool_extended_auditing_policies, keyed the same as var.synapse_sql_pool_extended_auditing_policies"
+  value       = module.synapse_sql_pool_extended_auditing_policies.synapse_sql_pool_extended_auditing_policies_storage_account_access_key_is_secondary
+}
+
+output "synapse_sql_pool_extended_auditing_policies_storage_endpoint" {
+  description = "Map of storage_endpoint values across all synapse_sql_pool_extended_auditing_policies, keyed the same as var.synapse_sql_pool_extended_auditing_policies"
+  value       = module.synapse_sql_pool_extended_auditing_policies.synapse_sql_pool_extended_auditing_policies_storage_endpoint
+}
+
+# --- azurerm_synapse_sql_pool_security_alert_policy ---
+output "synapse_sql_pool_security_alert_policies_id" {
+  description = "Map of id values across all synapse_sql_pool_security_alert_policies, keyed the same as var.synapse_sql_pool_security_alert_policies"
+  value       = module.synapse_sql_pool_security_alert_policies.synapse_sql_pool_security_alert_policies_id
+}
+
+output "synapse_sql_pool_security_alert_policies_disabled_alerts" {
+  description = "Map of disabled_alerts values across all synapse_sql_pool_security_alert_policies, keyed the same as var.synapse_sql_pool_security_alert_policies"
+  value       = module.synapse_sql_pool_security_alert_policies.synapse_sql_pool_security_alert_policies_disabled_alerts
+}
+
+output "synapse_sql_pool_security_alert_policies_email_account_admins_enabled" {
+  description = "Map of email_account_admins_enabled values across all synapse_sql_pool_security_alert_policies, keyed the same as var.synapse_sql_pool_security_alert_policies"
+  value       = module.synapse_sql_pool_security_alert_policies.synapse_sql_pool_security_alert_policies_email_account_admins_enabled
+}
+
+output "synapse_sql_pool_security_alert_policies_email_addresses" {
+  description = "Map of email_addresses values across all synapse_sql_pool_security_alert_policies, keyed the same as var.synapse_sql_pool_security_alert_policies"
+  value       = module.synapse_sql_pool_security_alert_policies.synapse_sql_pool_security_alert_policies_email_addresses
+}
+
+output "synapse_sql_pool_security_alert_policies_policy_state" {
+  description = "Map of policy_state values across all synapse_sql_pool_security_alert_policies, keyed the same as var.synapse_sql_pool_security_alert_policies"
+  value       = module.synapse_sql_pool_security_alert_policies.synapse_sql_pool_security_alert_policies_policy_state
+}
+
+output "synapse_sql_pool_security_alert_policies_retention_days" {
+  description = "Map of retention_days values across all synapse_sql_pool_security_alert_policies, keyed the same as var.synapse_sql_pool_security_alert_policies"
+  value       = module.synapse_sql_pool_security_alert_policies.synapse_sql_pool_security_alert_policies_retention_days
+}
+
+output "synapse_sql_pool_security_alert_policies_sql_pool_id" {
+  description = "Map of sql_pool_id values across all synapse_sql_pool_security_alert_policies, keyed the same as var.synapse_sql_pool_security_alert_policies"
+  value       = module.synapse_sql_pool_security_alert_policies.synapse_sql_pool_security_alert_policies_sql_pool_id
+}
+
+output "synapse_sql_pool_security_alert_policies_storage_account_access_key" {
+  description = "Map of storage_account_access_key values across all synapse_sql_pool_security_alert_policies, keyed the same as var.synapse_sql_pool_security_alert_policies"
+  value       = module.synapse_sql_pool_security_alert_policies.synapse_sql_pool_security_alert_policies_storage_account_access_key
+  sensitive   = true
+}
+
+output "synapse_sql_pool_security_alert_policies_storage_endpoint" {
+  description = "Map of storage_endpoint values across all synapse_sql_pool_security_alert_policies, keyed the same as var.synapse_sql_pool_security_alert_policies"
+  value       = module.synapse_sql_pool_security_alert_policies.synapse_sql_pool_security_alert_policies_storage_endpoint
+}
+
+# --- azurerm_synapse_sql_pool_workload_group ---
+output "synapse_sql_pool_workload_groups_id" {
+  description = "Map of id values across all synapse_sql_pool_workload_groups, keyed the same as var.synapse_sql_pool_workload_groups"
+  value       = module.synapse_sql_pool_workload_groups.synapse_sql_pool_workload_groups_id
+}
+
+output "synapse_sql_pool_workload_groups_importance" {
+  description = "Map of importance values across all synapse_sql_pool_workload_groups, keyed the same as var.synapse_sql_pool_workload_groups"
+  value       = module.synapse_sql_pool_workload_groups.synapse_sql_pool_workload_groups_importance
+}
+
+output "synapse_sql_pool_workload_groups_max_resource_percent" {
+  description = "Map of max_resource_percent values across all synapse_sql_pool_workload_groups, keyed the same as var.synapse_sql_pool_workload_groups"
+  value       = module.synapse_sql_pool_workload_groups.synapse_sql_pool_workload_groups_max_resource_percent
+}
+
+output "synapse_sql_pool_workload_groups_max_resource_percent_per_request" {
+  description = "Map of max_resource_percent_per_request values across all synapse_sql_pool_workload_groups, keyed the same as var.synapse_sql_pool_workload_groups"
+  value       = module.synapse_sql_pool_workload_groups.synapse_sql_pool_workload_groups_max_resource_percent_per_request
+}
+
+output "synapse_sql_pool_workload_groups_min_resource_percent" {
+  description = "Map of min_resource_percent values across all synapse_sql_pool_workload_groups, keyed the same as var.synapse_sql_pool_workload_groups"
+  value       = module.synapse_sql_pool_workload_groups.synapse_sql_pool_workload_groups_min_resource_percent
+}
+
+output "synapse_sql_pool_workload_groups_min_resource_percent_per_request" {
+  description = "Map of min_resource_percent_per_request values across all synapse_sql_pool_workload_groups, keyed the same as var.synapse_sql_pool_workload_groups"
+  value       = module.synapse_sql_pool_workload_groups.synapse_sql_pool_workload_groups_min_resource_percent_per_request
+}
+
+output "synapse_sql_pool_workload_groups_name" {
+  description = "Map of name values across all synapse_sql_pool_workload_groups, keyed the same as var.synapse_sql_pool_workload_groups"
+  value       = module.synapse_sql_pool_workload_groups.synapse_sql_pool_workload_groups_name
+}
+
+output "synapse_sql_pool_workload_groups_query_execution_timeout_in_seconds" {
+  description = "Map of query_execution_timeout_in_seconds values across all synapse_sql_pool_workload_groups, keyed the same as var.synapse_sql_pool_workload_groups"
+  value       = module.synapse_sql_pool_workload_groups.synapse_sql_pool_workload_groups_query_execution_timeout_in_seconds
+}
+
+output "synapse_sql_pool_workload_groups_sql_pool_id" {
+  description = "Map of sql_pool_id values across all synapse_sql_pool_workload_groups, keyed the same as var.synapse_sql_pool_workload_groups"
+  value       = module.synapse_sql_pool_workload_groups.synapse_sql_pool_workload_groups_sql_pool_id
+}
+
+# --- azurerm_synapse_workspace_vulnerability_assessment ---
+output "synapse_workspace_vulnerability_assessments_id" {
+  description = "Map of id values across all synapse_workspace_vulnerability_assessments, keyed the same as var.synapse_workspace_vulnerability_assessments"
+  value       = module.synapse_workspace_vulnerability_assessments.synapse_workspace_vulnerability_assessments_id
+}
+
+output "synapse_workspace_vulnerability_assessments_recurring_scans" {
+  description = "Map of recurring_scans values across all synapse_workspace_vulnerability_assessments, keyed the same as var.synapse_workspace_vulnerability_assessments"
+  value       = module.synapse_workspace_vulnerability_assessments.synapse_workspace_vulnerability_assessments_recurring_scans
+}
+
+output "synapse_workspace_vulnerability_assessments_storage_account_access_key" {
+  description = "Map of storage_account_access_key values across all synapse_workspace_vulnerability_assessments, keyed the same as var.synapse_workspace_vulnerability_assessments"
+  value       = module.synapse_workspace_vulnerability_assessments.synapse_workspace_vulnerability_assessments_storage_account_access_key
+  sensitive   = true
+}
+
+output "synapse_workspace_vulnerability_assessments_storage_container_path" {
+  description = "Map of storage_container_path values across all synapse_workspace_vulnerability_assessments, keyed the same as var.synapse_workspace_vulnerability_assessments"
+  value       = module.synapse_workspace_vulnerability_assessments.synapse_workspace_vulnerability_assessments_storage_container_path
+}
+
+output "synapse_workspace_vulnerability_assessments_storage_container_sas_key" {
+  description = "Map of storage_container_sas_key values across all synapse_workspace_vulnerability_assessments, keyed the same as var.synapse_workspace_vulnerability_assessments"
+  value       = module.synapse_workspace_vulnerability_assessments.synapse_workspace_vulnerability_assessments_storage_container_sas_key
+  sensitive   = true
+}
+
+output "synapse_workspace_vulnerability_assessments_workspace_security_alert_policy_id" {
+  description = "Map of workspace_security_alert_policy_id values across all synapse_workspace_vulnerability_assessments, keyed the same as var.synapse_workspace_vulnerability_assessments"
+  value       = module.synapse_workspace_vulnerability_assessments.synapse_workspace_vulnerability_assessments_workspace_security_alert_policy_id
+}
+
+# --- azurerm_synapse_sql_pool_vulnerability_assessment ---
+output "synapse_sql_pool_vulnerability_assessments_id" {
+  description = "Map of id values across all synapse_sql_pool_vulnerability_assessments, keyed the same as var.synapse_sql_pool_vulnerability_assessments"
+  value       = module.synapse_sql_pool_vulnerability_assessments.synapse_sql_pool_vulnerability_assessments_id
+}
+
+output "synapse_sql_pool_vulnerability_assessments_recurring_scans" {
+  description = "Map of recurring_scans values across all synapse_sql_pool_vulnerability_assessments, keyed the same as var.synapse_sql_pool_vulnerability_assessments"
+  value       = module.synapse_sql_pool_vulnerability_assessments.synapse_sql_pool_vulnerability_assessments_recurring_scans
+}
+
+output "synapse_sql_pool_vulnerability_assessments_sql_pool_security_alert_policy_id" {
+  description = "Map of sql_pool_security_alert_policy_id values across all synapse_sql_pool_vulnerability_assessments, keyed the same as var.synapse_sql_pool_vulnerability_assessments"
+  value       = module.synapse_sql_pool_vulnerability_assessments.synapse_sql_pool_vulnerability_assessments_sql_pool_security_alert_policy_id
+}
+
+output "synapse_sql_pool_vulnerability_assessments_storage_account_access_key" {
+  description = "Map of storage_account_access_key values across all synapse_sql_pool_vulnerability_assessments, keyed the same as var.synapse_sql_pool_vulnerability_assessments"
+  value       = module.synapse_sql_pool_vulnerability_assessments.synapse_sql_pool_vulnerability_assessments_storage_account_access_key
+  sensitive   = true
+}
+
+output "synapse_sql_pool_vulnerability_assessments_storage_container_path" {
+  description = "Map of storage_container_path values across all synapse_sql_pool_vulnerability_assessments, keyed the same as var.synapse_sql_pool_vulnerability_assessments"
+  value       = module.synapse_sql_pool_vulnerability_assessments.synapse_sql_pool_vulnerability_assessments_storage_container_path
+}
+
+output "synapse_sql_pool_vulnerability_assessments_storage_container_sas_key" {
+  description = "Map of storage_container_sas_key values across all synapse_sql_pool_vulnerability_assessments, keyed the same as var.synapse_sql_pool_vulnerability_assessments"
+  value       = module.synapse_sql_pool_vulnerability_assessments.synapse_sql_pool_vulnerability_assessments_storage_container_sas_key
+  sensitive   = true
+}
+
+# --- azurerm_synapse_sql_pool_vulnerability_assessment_baseline ---
+output "synapse_sql_pool_vulnerability_assessment_baselines_id" {
+  description = "Map of id values across all synapse_sql_pool_vulnerability_assessment_baselines, keyed the same as var.synapse_sql_pool_vulnerability_assessment_baselines"
+  value       = module.synapse_sql_pool_vulnerability_assessment_baselines.synapse_sql_pool_vulnerability_assessment_baselines_id
+}
+
+output "synapse_sql_pool_vulnerability_assessment_baselines_baseline" {
+  description = "Map of baseline values across all synapse_sql_pool_vulnerability_assessment_baselines, keyed the same as var.synapse_sql_pool_vulnerability_assessment_baselines"
+  value       = module.synapse_sql_pool_vulnerability_assessment_baselines.synapse_sql_pool_vulnerability_assessment_baselines_baseline
+}
+
+output "synapse_sql_pool_vulnerability_assessment_baselines_name" {
+  description = "Map of name values across all synapse_sql_pool_vulnerability_assessment_baselines, keyed the same as var.synapse_sql_pool_vulnerability_assessment_baselines"
+  value       = module.synapse_sql_pool_vulnerability_assessment_baselines.synapse_sql_pool_vulnerability_assessment_baselines_name
+}
+
+output "synapse_sql_pool_vulnerability_assessment_baselines_rule_name" {
+  description = "Map of rule_name values across all synapse_sql_pool_vulnerability_assessment_baselines, keyed the same as var.synapse_sql_pool_vulnerability_assessment_baselines"
+  value       = module.synapse_sql_pool_vulnerability_assessment_baselines.synapse_sql_pool_vulnerability_assessment_baselines_rule_name
+}
+
+output "synapse_sql_pool_vulnerability_assessment_baselines_sql_pool_vulnerability_assessment_id" {
+  description = "Map of sql_pool_vulnerability_assessment_id values across all synapse_sql_pool_vulnerability_assessment_baselines, keyed the same as var.synapse_sql_pool_vulnerability_assessment_baselines"
+  value       = module.synapse_sql_pool_vulnerability_assessment_baselines.synapse_sql_pool_vulnerability_assessment_baselines_sql_pool_vulnerability_assessment_id
+}
+
 

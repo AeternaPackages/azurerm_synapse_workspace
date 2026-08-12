@@ -108,6 +108,78 @@ locals {
       })
     }
   ]...)
+
+  synapse_sql_pool_extended_auditing_policies = merge([
+    for k1, v1 in var.synapse_workspaces : merge([
+      for k2, v2 in coalesce(v1.synapse_sql_pools, {}) : {
+        for k3, v3 in coalesce(v2.synapse_sql_pool_extended_auditing_policies, {}) :
+        "${k1}/${k2}/${k3}" => merge(v3, {
+          sql_pool_id = module.synapse_sql_pools.synapse_sql_pools_id["${k1}/${k2}"]
+        })
+      }
+    ]...)
+  ]...)
+
+  synapse_sql_pool_security_alert_policies = merge([
+    for k1, v1 in var.synapse_workspaces : merge([
+      for k2, v2 in coalesce(v1.synapse_sql_pools, {}) : {
+        for k3, v3 in coalesce(v2.synapse_sql_pool_security_alert_policies, {}) :
+        "${k1}/${k2}/${k3}" => merge(v3, {
+          sql_pool_id = module.synapse_sql_pools.synapse_sql_pools_id["${k1}/${k2}"]
+        })
+      }
+    ]...)
+  ]...)
+
+  synapse_sql_pool_workload_groups = merge([
+    for k1, v1 in var.synapse_workspaces : merge([
+      for k2, v2 in coalesce(v1.synapse_sql_pools, {}) : {
+        for k3, v3 in coalesce(v2.synapse_sql_pool_workload_groups, {}) :
+        "${k1}/${k2}/${k3}" => merge(v3, {
+          sql_pool_id = module.synapse_sql_pools.synapse_sql_pools_id["${k1}/${k2}"]
+        })
+      }
+    ]...)
+  ]...)
+
+  synapse_workspace_vulnerability_assessments = merge([
+    for k1, v1 in var.synapse_workspaces : merge([
+      for k2, v2 in coalesce(v1.synapse_workspace_security_alert_policies, {}) : {
+        for k3, v3 in coalesce(v2.synapse_workspace_vulnerability_assessments, {}) :
+        "${k1}/${k2}/${k3}" => merge(v3, {
+          workspace_security_alert_policy_id = module.synapse_workspace_security_alert_policies.synapse_workspace_security_alert_policies_id["${k1}/${k2}"]
+        })
+      }
+    ]...)
+  ]...)
+
+  synapse_sql_pool_vulnerability_assessments = merge([
+    for k1, v1 in var.synapse_workspaces : merge([
+      for k2, v2 in coalesce(v1.synapse_sql_pools, {}) : merge([
+        for k3, v3 in coalesce(v2.synapse_sql_pool_security_alert_policies, {}) : {
+          for k4, v4 in coalesce(v3.synapse_sql_pool_vulnerability_assessments, {}) :
+          "${k1}/${k2}/${k3}/${k4}" => merge(v4, {
+            sql_pool_security_alert_policy_id = module.synapse_sql_pool_security_alert_policies.synapse_sql_pool_security_alert_policies_id["${k1}/${k2}/${k3}"]
+          })
+        }
+      ]...)
+    ]...)
+  ]...)
+
+  synapse_sql_pool_vulnerability_assessment_baselines = merge([
+    for k1, v1 in var.synapse_workspaces : merge([
+      for k2, v2 in coalesce(v1.synapse_sql_pools, {}) : merge([
+        for k3, v3 in coalesce(v2.synapse_sql_pool_security_alert_policies, {}) : merge([
+          for k4, v4 in coalesce(v3.synapse_sql_pool_vulnerability_assessments, {}) : {
+            for k5, v5 in coalesce(v4.synapse_sql_pool_vulnerability_assessment_baselines, {}) :
+            "${k1}/${k2}/${k3}/${k4}/${k5}" => merge(v5, {
+              sql_pool_vulnerability_assessment_id = module.synapse_sql_pool_vulnerability_assessments.synapse_sql_pool_vulnerability_assessments_id["${k1}/${k2}/${k3}/${k4}"]
+            })
+          }
+        ]...)
+      ]...)
+    ]...)
+  ]...)
 }
 
 module "synapse_workspaces" {
@@ -185,5 +257,41 @@ module "synapse_workspace_sql_aad_admins" {
   source                           = "git::https://github.com/AeternaModules/azurerm_synapse_workspace_sql_aad_admin.git?ref=v5.0.0"
   synapse_workspace_sql_aad_admins = local.synapse_workspace_sql_aad_admins
   depends_on                       = [module.synapse_workspaces]
+}
+
+module "synapse_sql_pool_extended_auditing_policies" {
+  source                                      = "git::https://github.com/AeternaModules/azurerm_synapse_sql_pool_extended_auditing_policy.git?ref=v5.0.0"
+  synapse_sql_pool_extended_auditing_policies = local.synapse_sql_pool_extended_auditing_policies
+  depends_on                                  = [module.synapse_sql_pools]
+}
+
+module "synapse_sql_pool_security_alert_policies" {
+  source                                   = "git::https://github.com/AeternaModules/azurerm_synapse_sql_pool_security_alert_policy.git?ref=v5.0.0"
+  synapse_sql_pool_security_alert_policies = local.synapse_sql_pool_security_alert_policies
+  depends_on                               = [module.synapse_sql_pools]
+}
+
+module "synapse_sql_pool_workload_groups" {
+  source                           = "git::https://github.com/AeternaModules/azurerm_synapse_sql_pool_workload_group.git?ref=v5.0.0"
+  synapse_sql_pool_workload_groups = local.synapse_sql_pool_workload_groups
+  depends_on                       = [module.synapse_sql_pools]
+}
+
+module "synapse_workspace_vulnerability_assessments" {
+  source                                      = "git::https://github.com/AeternaModules/azurerm_synapse_workspace_vulnerability_assessment.git?ref=v5.0.0"
+  synapse_workspace_vulnerability_assessments = local.synapse_workspace_vulnerability_assessments
+  depends_on                                  = [module.synapse_workspace_security_alert_policies]
+}
+
+module "synapse_sql_pool_vulnerability_assessments" {
+  source                                     = "git::https://github.com/AeternaModules/azurerm_synapse_sql_pool_vulnerability_assessment.git?ref=v5.0.0"
+  synapse_sql_pool_vulnerability_assessments = local.synapse_sql_pool_vulnerability_assessments
+  depends_on                                 = [module.synapse_sql_pool_security_alert_policies]
+}
+
+module "synapse_sql_pool_vulnerability_assessment_baselines" {
+  source                                              = "git::https://github.com/AeternaModules/azurerm_synapse_sql_pool_vulnerability_assessment_baseline.git?ref=v5.0.0"
+  synapse_sql_pool_vulnerability_assessment_baselines = local.synapse_sql_pool_vulnerability_assessment_baselines
+  depends_on                                          = [module.synapse_sql_pool_vulnerability_assessments]
 }
 
