@@ -183,114 +183,114 @@ locals {
 }
 
 module "synapse_workspaces" {
-  source             = "git::https://github.com/AeternaModules/azurerm_synapse_workspace.git?ref=v5.0.0"
+  source             = "git::https://github.com/AeternaModules/azurerm_synapse_workspace.git?ref=v5.0.1"
   synapse_workspaces = local.synapse_workspaces
 }
 
 module "synapse_firewall_rules" {
-  source                 = "git::https://github.com/AeternaModules/azurerm_synapse_firewall_rule.git?ref=v5.0.0"
+  source                 = "git::https://github.com/AeternaModules/azurerm_synapse_firewall_rule.git?ref=v5.0.1"
   synapse_firewall_rules = local.synapse_firewall_rules
   depends_on             = [module.synapse_workspaces]
 }
 
 module "synapse_integration_runtime_azures" {
-  source                             = "git::https://github.com/AeternaModules/azurerm_synapse_integration_runtime_azure.git?ref=v5.0.0"
+  source                             = "git::https://github.com/AeternaModules/azurerm_synapse_integration_runtime_azure.git?ref=v5.0.1"
   synapse_integration_runtime_azures = local.synapse_integration_runtime_azures
   depends_on                         = [module.synapse_workspaces]
 }
 
 module "synapse_integration_runtime_self_hosteds" {
-  source                                   = "git::https://github.com/AeternaModules/azurerm_synapse_integration_runtime_self_hosted.git?ref=v5.0.0"
+  source                                   = "git::https://github.com/AeternaModules/azurerm_synapse_integration_runtime_self_hosted.git?ref=v5.0.1"
   synapse_integration_runtime_self_hosteds = local.synapse_integration_runtime_self_hosteds
   depends_on                               = [module.synapse_workspaces]
 }
 
 module "synapse_linked_services" {
-  source                  = "git::https://github.com/AeternaModules/azurerm_synapse_linked_service.git?ref=v5.0.0"
+  source                  = "git::https://github.com/AeternaModules/azurerm_synapse_linked_service.git?ref=v5.0.1"
   synapse_linked_services = local.synapse_linked_services
   depends_on              = [module.synapse_workspaces]
 }
 
 module "synapse_managed_private_endpoints" {
-  source                            = "git::https://github.com/AeternaModules/azurerm_synapse_managed_private_endpoint.git?ref=v5.0.0"
+  source                            = "git::https://github.com/AeternaModules/azurerm_synapse_managed_private_endpoint.git?ref=v5.0.1"
   synapse_managed_private_endpoints = local.synapse_managed_private_endpoints
   depends_on                        = [module.synapse_workspaces]
 }
 
 module "synapse_spark_pools" {
-  source              = "git::https://github.com/AeternaModules/azurerm_synapse_spark_pool.git?ref=v5.0.0"
+  source              = "git::https://github.com/AeternaModules/azurerm_synapse_spark_pool.git?ref=v5.0.1"
   synapse_spark_pools = local.synapse_spark_pools
   depends_on          = [module.synapse_workspaces]
 }
 
 module "synapse_sql_pools" {
-  source            = "git::https://github.com/AeternaModules/azurerm_synapse_sql_pool.git?ref=v5.0.0"
+  source            = "git::https://github.com/AeternaModules/azurerm_synapse_sql_pool.git?ref=v5.0.1"
   synapse_sql_pools = local.synapse_sql_pools
   depends_on        = [module.synapse_workspaces]
 }
 
 module "synapse_workspace_aad_admins" {
-  source                       = "git::https://github.com/AeternaModules/azurerm_synapse_workspace_aad_admin.git?ref=v5.0.0"
+  source                       = "git::https://github.com/AeternaModules/azurerm_synapse_workspace_aad_admin.git?ref=v5.0.1"
   synapse_workspace_aad_admins = local.synapse_workspace_aad_admins
   depends_on                   = [module.synapse_workspaces]
 }
 
 module "synapse_workspace_extended_auditing_policies" {
-  source                                       = "git::https://github.com/AeternaModules/azurerm_synapse_workspace_extended_auditing_policy.git?ref=v5.0.0"
+  source                                       = "git::https://github.com/AeternaModules/azurerm_synapse_workspace_extended_auditing_policy.git?ref=v5.0.1"
   synapse_workspace_extended_auditing_policies = local.synapse_workspace_extended_auditing_policies
   depends_on                                   = [module.synapse_workspaces]
 }
 
 module "synapse_workspace_keys" {
-  source                 = "git::https://github.com/AeternaModules/azurerm_synapse_workspace_key.git?ref=v5.0.0"
+  source                 = "git::https://github.com/AeternaModules/azurerm_synapse_workspace_key.git?ref=v5.0.1"
   synapse_workspace_keys = local.synapse_workspace_keys
   depends_on             = [module.synapse_workspaces]
 }
 
 module "synapse_workspace_security_alert_policies" {
-  source                                    = "git::https://github.com/AeternaModules/azurerm_synapse_workspace_security_alert_policy.git?ref=v5.0.0"
+  source                                    = "git::https://github.com/AeternaModules/azurerm_synapse_workspace_security_alert_policy.git?ref=v5.0.1"
   synapse_workspace_security_alert_policies = local.synapse_workspace_security_alert_policies
   depends_on                                = [module.synapse_workspaces]
 }
 
 module "synapse_workspace_sql_aad_admins" {
-  source                           = "git::https://github.com/AeternaModules/azurerm_synapse_workspace_sql_aad_admin.git?ref=v5.0.0"
+  source                           = "git::https://github.com/AeternaModules/azurerm_synapse_workspace_sql_aad_admin.git?ref=v5.0.1"
   synapse_workspace_sql_aad_admins = local.synapse_workspace_sql_aad_admins
   depends_on                       = [module.synapse_workspaces]
 }
 
 module "synapse_sql_pool_extended_auditing_policies" {
-  source                                      = "git::https://github.com/AeternaModules/azurerm_synapse_sql_pool_extended_auditing_policy.git?ref=v5.0.0"
+  source                                      = "git::https://github.com/AeternaModules/azurerm_synapse_sql_pool_extended_auditing_policy.git?ref=v5.0.1"
   synapse_sql_pool_extended_auditing_policies = local.synapse_sql_pool_extended_auditing_policies
   depends_on                                  = [module.synapse_sql_pools]
 }
 
 module "synapse_sql_pool_security_alert_policies" {
-  source                                   = "git::https://github.com/AeternaModules/azurerm_synapse_sql_pool_security_alert_policy.git?ref=v5.0.0"
+  source                                   = "git::https://github.com/AeternaModules/azurerm_synapse_sql_pool_security_alert_policy.git?ref=v5.0.1"
   synapse_sql_pool_security_alert_policies = local.synapse_sql_pool_security_alert_policies
   depends_on                               = [module.synapse_sql_pools]
 }
 
 module "synapse_sql_pool_workload_groups" {
-  source                           = "git::https://github.com/AeternaModules/azurerm_synapse_sql_pool_workload_group.git?ref=v5.0.0"
+  source                           = "git::https://github.com/AeternaModules/azurerm_synapse_sql_pool_workload_group.git?ref=v5.0.1"
   synapse_sql_pool_workload_groups = local.synapse_sql_pool_workload_groups
   depends_on                       = [module.synapse_sql_pools]
 }
 
 module "synapse_workspace_vulnerability_assessments" {
-  source                                      = "git::https://github.com/AeternaModules/azurerm_synapse_workspace_vulnerability_assessment.git?ref=v5.0.0"
+  source                                      = "git::https://github.com/AeternaModules/azurerm_synapse_workspace_vulnerability_assessment.git?ref=v5.0.1"
   synapse_workspace_vulnerability_assessments = local.synapse_workspace_vulnerability_assessments
   depends_on                                  = [module.synapse_workspace_security_alert_policies]
 }
 
 module "synapse_sql_pool_vulnerability_assessments" {
-  source                                     = "git::https://github.com/AeternaModules/azurerm_synapse_sql_pool_vulnerability_assessment.git?ref=v5.0.0"
+  source                                     = "git::https://github.com/AeternaModules/azurerm_synapse_sql_pool_vulnerability_assessment.git?ref=v5.0.1"
   synapse_sql_pool_vulnerability_assessments = local.synapse_sql_pool_vulnerability_assessments
   depends_on                                 = [module.synapse_sql_pool_security_alert_policies]
 }
 
 module "synapse_sql_pool_vulnerability_assessment_baselines" {
-  source                                              = "git::https://github.com/AeternaModules/azurerm_synapse_sql_pool_vulnerability_assessment_baseline.git?ref=v5.0.0"
+  source                                              = "git::https://github.com/AeternaModules/azurerm_synapse_sql_pool_vulnerability_assessment_baseline.git?ref=v5.0.1"
   synapse_sql_pool_vulnerability_assessment_baselines = local.synapse_sql_pool_vulnerability_assessment_baselines
   depends_on                                          = [module.synapse_sql_pool_vulnerability_assessments]
 }
